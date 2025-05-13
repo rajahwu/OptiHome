@@ -20,7 +20,37 @@ nav ul {
 nav ul li {
     margin: 0 15px;
 }
+
 nav ul li a {
     color: white;
     text-decoration: none;
+    padding: 10px;
+    display: block;
 }
+
+nav ul li a.active {
+    background-color: #007bff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#content {
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status {
+    font-size: 1.2em;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.status.online {
+    color: green;
+}
+
+.status.offline {
+    color: red;
+}
+

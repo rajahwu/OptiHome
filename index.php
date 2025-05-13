@@ -1,29 +1,42 @@
-<?php
-//   $reactServer = "http://localhost:5173";
-//   $ch = curl_init($reactServer);
+<!DOCTYPE html>
+<html lang="en">
 
-//   curl_setopt($ch, CURLOPT_NOBODY, true);
-//   curl_setopt($ch, CURLOPT_TIMEOUT, 2); // Short timeout to check if server is up
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Dashboard</title>
+    <link rel="stylesheet" href="public/styles.css">
+</head>
 
-//   $serverUp = curl_exec($ch) !== false;
-//   curl_close($ch);
+<body>
+    <header>
+        <h1>Home Dashboard</h1>
+    </header>
+    <?php
+  $route = trim($_SERVER['REQUEST_URI'], '/home/');
+  if ($route === '') {
+      $route = 'dashboard'; // Default page
+  }
+?>
 
-//   if ($serverUp) {
-//       header("Location: $reactServer");
-//       exit();
-//   } else {
-//       $htmlFile = __DIR__ . "/public/index.html";
-//       if (file_exists($htmlFile)) {
-//           header("Content-Type: text/html");
-//           readfile($htmlFile);
-//       } else {
-//           http_response_code(404);
-//           echo "<h1>404 - Home page not found</h1>";
-//       }
-//       exit();
-//   }
-
-//   header("Location: src/index.php");
+    <nav>
+        <ul>
+            <li><a href="/home/dashboard" class="<?= ($route === 'dashboard') ? 'active' : '' ?>">Dashboard</a></li>
+            <li><a href="/home/recent-activity" class="<?= ($route === 'recent-activity') ? 'active' : '' ?>">Recent
+                    Activity</a></li>
+            <li><a href="/home/settings" class="<?= ($route === 'settings') ? 'active' : '' ?>">Settings</a></li>
+            <li><a href="/home/system-status" class="<?= ($route === 'system-status') ? 'active' : '' ?>">System
+                    Status</a></li>
+        </ul>
+    </nav>
+    <main id="content">
+        <?php
 
   include("src/index.php");
-?>
+
+  ?>
+    </main>
+    <script src="public/app.js"></script>
+</body>
+
+</html>

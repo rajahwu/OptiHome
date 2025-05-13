@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /home/
+
+# Redirect clean URLs to index.php?page=<route>
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?page=$1 [L,QSA]

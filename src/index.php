@@ -1,42 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Dashboard</title>
-    <link rel="stylesheet" href="public/styles.css">
-</head>
-
-<body>
-    <header>
-        <h1>Home Dashboard</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.php?page=dashboard">Dashboard</a></li>
-            <li><a href="index.php?page=recent-activity">Recent Activity</a></li>
-            <li><a href="index.php?page=settings">Settings</a></li>
-            <li><a href="index.php?page=system-status">System Status</a></li>
-        </ul>
-    </nav>
-    <main id="content">
-
-
-
 <?php
-  $page = $_GET['page'] ?? 'dashboard';
-  $file = __DIR__ . "/routes/{$page}.php";
+// Define the base directory for routes
+$baseDir = __DIR__ . "/routes/";
 
-  if (file_exists($file)) {
-      require $file;
-  } else {
-      echo "<h1>404 - Page Not Found</h1>";
-  }
+// Get requested route from the URL
+$route = trim($_SERVER['REQUEST_URI'], '/home/'); // Removes `/home/` from the URL
+
+// Default to dashboard if empty
+if ($route === '') {
+    $route = "dashboard";
+}
+
+// Construct file path
+$file = $baseDir . $route . ".php";
+
+// Check if the file exists and include it
+if (file_exists($file)) {
+    require $file;
+} else {
+    http_response_code(404);
+    echo "<h2>404 - Page Not Found</h2>";
+}
 ?>
-
- </main>
-    <script src="public/app.js"></script>
-</body>
-
-</html>
