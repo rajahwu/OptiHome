@@ -13,12 +13,14 @@ function checkServer($url) {
     return ($httpCode >= 200 && $httpCode < 400); // Checks if response is in success range
 }
 
-$liveReactApp = checkServer("https://opti-home-react-app.vercel.app/");
-$reactRunning = checkServer("http://localhost:5173");
+$liveReactRunning = checkServer("https://opti-home-react-app.vercel.app/");
+$localReactRunning = checkServer("http://localhost:5173");
 $phpRunning = checkServer("http://localhost");
 
+include("src/routes/github.php");
+
 echo "<h2>System Status</h2>";
-echo "<p>Live React App: " . ($liveReactApp ? "✅ Running" : "❌ Offline") . "</p>";
-echo "<p>React Server: " . ($reactRunning ? "✅ Running" : "❌ Offline") . "</p>";
+echo "<p>Live React App: " . ($liveReactRunning ? "✅ Running" : "❌ Offline") . "</p>";
+echo "<p>Local React Server: " . ($localReactRunning ? "✅ Running" : "❌ Offline") . "</p>";
 echo "<p>PHP Server: " . ($phpRunning ? "✅ Running" : "❌ Offline") . "</p>";
 ?>
