@@ -1,4 +1,7 @@
-<?php
-echo "<h1>Welcome to Your Home Dashboard</h1>";
-echo "<p>System status, recent activity, and settings all in one place.</p>";
-?>
+<h2>Dashboard</h2>
+<h3>Services:</p>
+    <ul class="services-list">
+        <li>
+            <a href="/home/services/hubnugget" class="btn">Hubnugget</a>
+        </li>
+    </ul>

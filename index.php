@@ -14,13 +14,13 @@ $dotenv->load();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Dashboard</title>
+    <title>OptiHome</title>
     <link rel="stylesheet" href="public/styles.css">
 </head>
 
 <body>
     <header>
-        <h1>Home Dashboard</h1>
+        <h1>OptiHome</h1>
     </header>
     <?php
   $route = trim($_SERVER['REQUEST_URI'], '/home/');
